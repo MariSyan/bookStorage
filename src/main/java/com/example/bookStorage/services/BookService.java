@@ -27,9 +27,13 @@ public class BookService {
             Author savedAuthor = authorRepository.save(book.getAuthor());
             book.setAuthor(savedAuthor);
         }
+        Author author = book.getAuthor();
+        if (author != null) {
+            authorRepository.save(author);
+        }
+        
         return bookRepository.save(book);
     }
-    
    
 
     public Book updateBook(Long id, Book bookDetails) {
